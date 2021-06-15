@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+
+<!-- Page Header -->
+  <header class="masthead" style="background-image: url(' {{ url_for('static', filename='img/about-bg.jpg') }}         ')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Transactions History</h1></h1>
+            <span class="subheading"> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="table-responsive">
+    <table class="table" style="margin-top: 40px;">
+        <thead>
+            <tr>
+                <th scope="col">S no.</th>
+                <th scope="col">Sender</th>
+                <th scope="col">Reciever</th>
+                <th scope="col">Amount Transfered</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in result %}
+            <tr>
+                <th scope="row">{{ item.sno }}</th>
+                <td>{{ item.send_name }}</td>
+                <td>{{ item.receive_name }}</td>
+                <td>{{ item.amount}}</td>
+                <td>{{ item.date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

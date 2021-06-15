@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+<!-- Page Header -->
+  <header class="masthead" style="background-image: url(' {{ url_for('static', filename='img/home-bg.jpg') }}         ')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>All Customers</h1>
+            <span class="subheading"> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<h1 class="mb-3" style="font-family:sans-serif;text-shadow: 2px 2px 5px gray;"> Click on the customer to transfer
+    amount:</h1>
+<div class="table-responsive">
+    <table class="table table-hover" style="margin-top: 10px;">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col"> Name</th>
+                <th scope="col"> Email</th>
+                <th scope="col">Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in result %}
+            <tr>
+                <td><a class="nav-link" href="/transactions">{{ item.name }}</a></td>
+                <td><a class="nav-link" href="/transactions">{{ item.email }}</a></td>
+                <td><a class="nav-link" href="/transactions">{{ item.balance }}</a></td>
+                <td><a href="/transactions">  <button class="btn btn-primary"> Transfer </button></a>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

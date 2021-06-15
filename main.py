@@ -65,10 +65,9 @@ def transactions():
                 db.session.commit()
                 result = Transactions.query.all()
                 print(result)
-
+                flash("Transaction completed successfully!", "success")
                 return render_template('history.html', result=result)
 
-    flash("Transaction completed successfully!", "success")
     return render_template('transactions.html', trans=trans)
 
 
@@ -85,7 +84,6 @@ def adduser():
             res = Customers.query.all()
             flash("User added successfully !", "success")
             return render_template('user.html', result=res)
-
     return render_template('adduser.html')
 
 
@@ -94,13 +92,16 @@ def mers():
     if request.method == 'GET':
         result = Transactions.query.all()
         print(result)
-        flash("Transaction completed successfully!", "success")
+
         return render_template('history.html', result=result)
 
 
-app.route('/about')
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 
+@app.route('/about')
 def about():
     return render_template('about.html')
 
